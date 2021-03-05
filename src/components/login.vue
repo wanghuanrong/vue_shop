@@ -1,5 +1,6 @@
 <template>
   <div class="login_container">
+    111
     <div class="login_box">
       <!-- logo区域 -->
       <div class="avatar_box">
