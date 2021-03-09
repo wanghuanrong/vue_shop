@@ -8,6 +8,11 @@ const User = () => import('@/components/user/user')
 const Rights = () => import("@/components/power/rights")
 const Roles = () => import("@/components/power/roles")
 const Cate = () => import("@/components/goods/Cate")
+const Params = () => import("@/components/goods/params")
+const List = () => import("@/components/goods/List")
+const Add = () => import("@/components/goods/add")
+const Order = () => import("@/components/order/Order")
+
 
 Vue.use(VueRouter)
 
@@ -28,31 +33,43 @@ const routes = [
       {
         path: '',
         // home子路由的重定向
-        redirect: 'welcome',
+        redirect: '/welcome',
       },
       {
-        path: 'welcome',
+        path: '/welcome',
         component: Welcome
       }, {
-        path: 'users',
+        path: '/users',
         component: User
       }, {
-        path: 'rights',
+        path: '/rights',
         component: Rights
       }, {
-        path: 'roles',
+        path: '/roles',
         component: Roles
       }, {
-        path: 'categories',
+        path: '/categories',
         component: Cate
+      }, {
+        path: '/params',
+        component: Params
+      }, {
+        path: '/goods',
+        component: List
+      }, {
+        path: '/goods/add',
+        component: Add
+      }, {
+        path: '/orders',
+        component: Order
       }
     ]
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes
 })
 

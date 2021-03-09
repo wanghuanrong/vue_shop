@@ -36,8 +36,8 @@
             </template>
 
             <!-- 二级菜单 -->
-            <el-menu-item :index="subItem.path + ''" v-for="subItem in item.children" :key="subItem.id"
-             @click="saveNavState(subItem.path)">
+            <el-menu-item :index=" '/'+subItem.path" v-for="subItem in item.children" :key="subItem.id"
+             @click="saveNavState('/' + subItem.path)">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{subItem.authName}}</span>
@@ -59,11 +59,6 @@
 
 <script>
 export default {
-  created(){
-    this.getMenuList();
-
-    this.activePath = sessionStorage.getItem("activePath");
-  },
   name: "home",
   data(){
     return{
@@ -78,8 +73,13 @@ export default {
       },
       isCollapse: false,
 
-      activePath: null
+      activePath: ''
     }
+  },
+  created(){
+    this.getMenuList();
+
+    this.activePath = sessionStorage.getItem("activePath");
   },
   methods: {
     clear() {
@@ -91,7 +91,7 @@ export default {
     },
     saveNavState(path){
       sessionStorage.setItem("activePath", path);
-      this.activePath = path
+      // this.activePath = path
     },
     async getMenuList(){
       const { data: res } = await this.$http.get('menus')
